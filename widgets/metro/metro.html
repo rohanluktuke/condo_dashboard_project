@@ -1,0 +1,15 @@
+<!--<h1 data-bind="timing"></h1>
+<h2 data-bind-class="code | prepend 'klimato-'"></h2>
+
+<h3 data-bind="timings"></h3>
+-->
+
+<!--
+-->
+<ol>
+	<li data-foreach-timing="timings">
+		<span data-bind="timing.RouteID"></span> at <span data-bind="timing.Minutes"></span>
+	</li>
+</ol>
+
+<p class="updated-at" data-bind="updatedAtMessage"></p>
