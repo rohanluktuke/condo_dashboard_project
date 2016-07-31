@@ -5,7 +5,7 @@ url = 'https://api.wmata.com/NextBusService.svc/json/jPredictions?StopID=1001878
 
 
 
-SCHEDULER.every "1m", :first_in => 0 do |job|
+SCHEDULER.every "3m", :first_in => 0 do |job|
   response = RestClient.get url, {"api_key" => '0b30a24a9d3d46ccbf0f4da7364cb6f6'} 
 
   parsed = JSON.parse(response)
@@ -15,7 +15,8 @@ SCHEDULER.every "1m", :first_in => 0 do |job|
 
   array_predictions = parsed["Predictions"]
   #puts array_predictions
-  puts parsed['StopName']
+  stop = parsed['StopName']
+  puts stop
 
   array_predictions.each {
   	|prediction|
@@ -24,5 +25,5 @@ SCHEDULER.every "1m", :first_in => 0 do |job|
 
   array_predictions_json = JSON.generate(array_predictions)
 
-  send_event "metro", { timings: array_predictions }
+  send_event "metro", { timings: array_predictions, stop: stop }
 end
