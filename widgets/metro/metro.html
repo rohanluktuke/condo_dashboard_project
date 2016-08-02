@@ -7,11 +7,12 @@
 <!--
 <p>Columbia Rd & Ontario Rd</p>
 -->
+<p> Next Southbound Bus at :</p>
 <p data-bind="stop"></p>
-<ol>
+<ul>
 	<li data-foreach-timing="timings">
 		<span data-bind="timing.RouteID"></span> in <span data-bind="timing.Minutes"></span>
 	</li>
-</ol>
+</ul>
 
 <p class="updated-at" data-bind="updatedAtMessage"></p>
